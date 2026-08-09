@@ -65,6 +65,153 @@ MacFactory                 WindowsFactory
 
 Once you choose the factory, the products stay in the same family.
 
+## Real-world use cases
+
+The operating-system UI example is easy to visualize, but the pattern is not specifically about operating systems. The important clue is that you need to swap **a coordinated family of related implementations**, not just one object.
+
+### Cloud providers
+
+An application that can run on multiple cloud providers might define a family of infrastructure services:
+
+```text
+CloudFactory
+    +-- createStorage()
+    +-- createQueue()
+    +-- createDatabase()
+
+AWSFactory
+    +-- S3Storage
+    +-- SQSQueue
+    +-- DynamoDatabase
+
+AzureFactory
+    +-- AzureBlobStorage
+    +-- AzureQueue
+    +-- CosmosDatabase
+```
+
+Business logic can depend on `Storage`, `Queue`, and `Database` interfaces. Selecting one factory swaps the whole cloud family instead of spreading `if (aws)` / `if (azure)` checks throughout the application.
+
+### Database families
+
+A data-access layer might need several related database-specific objects:
+
+```text
+DatabaseFactory
+    +-- createConnection()
+    +-- createCommand()
+    +-- createQueryBuilder()
+
+PostgresFactory
+SQLServerFactory
+```
+
+Choosing the PostgreSQL factory gives you PostgreSQL-compatible implementations of all three. Choosing SQL Server gives you the matching SQL Server family.
+
+### Payment providers
+
+Suppose an application supports several payment platforms and each platform requires several related services:
+
+```text
+PaymentFactory
+    +-- createPaymentProcessor()
+    +-- createRefundProcessor()
+    +-- createSubscriptionManager()
+
+StripeFactory
+OtherPaymentProviderFactory
+```
+
+The rest of the checkout system can work against the common interfaces without knowing which provider's SDK is underneath.
+
+### Game themes or worlds
+
+A game could swap an entire family of objects based on its current world or theme:
+
+```text
+GameFactory
+    +-- createEnemy()
+    +-- createWeapon()
+    +-- createBuilding()
+
+MedievalFactory
+    +-- Knight
+    +-- Sword
+    +-- Castle
+
+SciFiFactory
+    +-- Robot
+    +-- LaserGun
+    +-- SpaceStation
+```
+
+The game rules can operate on `Enemy`, `Weapon`, and `Building` while the factory keeps each world's objects consistent.
+
+### Production vs. test dependencies
+
+This is an especially practical use case.
+
+A production application may need several real external services:
+
+```text
+ServiceFactory
+    +-- createDatabase()
+    +-- createEmailService()
+    +-- createStorage()
+```
+
+A `ProductionFactory` could create the real database, email provider, and cloud storage clients. A `TestFactory` could create an in-memory database, fake email sender, and fake storage service.
+
+```text
+ProductionFactory             TestFactory
+      |                            |
+      +-- RealDatabase             +-- InMemoryDatabase
+      +-- RealEmailService         +-- FakeEmailService
+      +-- CloudStorage             +-- FakeStorage
+```
+
+One factory choice swaps the application's entire dependency family for testing.
+
+Modern dependency-injection frameworks can accomplish this in other ways, but the underlying design idea is very similar: the application depends on abstractions while something outside the application chooses the concrete family.
+
+### API versions
+
+An application that supports substantially different versions of an external API could group version-specific components together:
+
+```text
+ApiFactory
+    +-- createRequestBuilder()
+    +-- createResponseParser()
+    +-- createSerializer()
+
+ApiV1Factory
+ApiV2Factory
+```
+
+This helps keep V1 components paired with V1 components and V2 components paired with V2 components.
+
+### The common thread
+
+All of these examples have the same shape:
+
+```text
+                 Family A          Family B
+                    |                 |
+Product type 1  -> A1                B1
+Product type 2  -> A2                B2
+Product type 3  -> A3                B3
+```
+
+If you only need to swap **one** implementation, Abstract Factory is probably more machinery than you need.
+
+If changing one implementation usually means several other related implementations must change with it, Abstract Factory starts to become useful.
+
+A useful question to ask is:
+
+> Am I choosing one object, or am I choosing a whole compatible set of objects?
+
+The second case is where Abstract Factory fits.
+
 ## Abstract Factory vs. Factory Method
 
 This is the most important comparison for this demo.
