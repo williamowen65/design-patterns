@@ -113,6 +113,39 @@ So a useful way to remember the distinction is:
 
 If a parent/child model already solves the application's problem, there is no reason to introduce Composite merely because the data forms a tree. Composite becomes useful when treating leaves and groups uniformly actually simplifies the application's behavior.
 
+## Real-world note: you may use Composite without implementing it yourself
+
+A developer can make use of a design pattern even when a framework or platform has already implemented the underlying structure.
+
+The browser **DOM (Document Object Model)** is a useful example. HTML is represented as a tree of nodes. Elements can contain other elements and text nodes, and browser APIs already provide the parent/child relationships and tree operations.
+
+A simplified DOM might look like:
+
+```text
+Node
+├── Text node
+└── Element
+    ├── Element
+    ├── Element
+    │   └── Text node
+    └── Element
+```
+
+When writing frontend code — for example, drag-and-drop behavior — a developer may work with operations such as:
+
+```javascript
+element.remove();
+element.cloneNode(true);
+element.parentNode;
+element.childNodes;
+```
+
+The developer did not have to build the DOM's tree infrastructure. The browser already provides it.
+
+This illustrates an important lesson about design patterns: **learning a pattern does not necessarily mean you will frequently implement it from scratch.** Often the practical skill is recognizing a pattern that a framework or library already uses. Once you recognize the structure, it becomes easier to understand the API and reason about how its objects interact.
+
+Composite is therefore useful both as something you might design yourself and as a pattern you may encounter already embedded in frameworks, UI systems, document models, and other libraries.
+
 ## When Composite is useful
 
 Use Composite when:
