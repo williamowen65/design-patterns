@@ -48,6 +48,71 @@ Documents/
 
 as the same general type: `FileSystemItem`.
 
+## A tree structure is not automatically the Composite pattern
+
+A useful distinction is that **having parent/child relationships does not by itself mean an application is using the Composite design pattern**.
+
+For example, imagine a mind-map or discussion application where every post can reference a parent and its children:
+
+```java
+class Post {
+    Post parent;
+    List<Post> children;
+}
+```
+
+That creates a perfectly valid tree:
+
+```text
+             Post A
+            /      \
+        Post B     Post C
+        /   \
+    Post D  Post E
+```
+
+This is a **tree-shaped data structure**. The references describe relationships between posts, but that alone is not the Composite pattern.
+
+Composite adds another idea: client code should be able to treat **one object and an entire nested group of objects through the same interface**.
+
+For example:
+
+```java
+interface MindMapItem {
+    void display();
+}
+
+class Post implements MindMapItem {
+    public void display() {
+        // display this one post
+    }
+}
+
+class PostGroup implements MindMapItem {
+    List<MindMapItem> children;
+
+    public void display() {
+        for (MindMapItem child : children) {
+            child.display();
+        }
+    }
+}
+```
+
+Now client code could call `display()` on either one individual `Post` or a `PostGroup` representing a whole branch of the mind map.
+
+So a useful way to remember the distinction is:
+
+**Tree structure:**
+
+> Objects can contain or reference other objects.
+
+**Composite pattern:**
+
+> Client code can treat a single object and a whole nested collection of objects in the same way.
+
+If a parent/child model already solves the application's problem, there is no reason to introduce Composite merely because the data forms a tree. Composite becomes useful when treating leaves and groups uniformly actually simplifies the application's behavior.
+
 ## When Composite is useful
 
 Use Composite when:
