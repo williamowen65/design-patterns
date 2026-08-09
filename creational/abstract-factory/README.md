@@ -1,5 +1,26 @@
 # Abstract Factory Pattern
 
+## Table of Contents
+
+- [What problem does it solve?](#what-problem-does-it-solve)
+- [The key idea](#the-key-idea)
+- [Interface mechanics: why the factories must share a contract](#interface-mechanics-why-the-factories-must-share-a-contract)
+  - [Why this is required: polymorphism](#why-this-is-required-polymorphism)
+- [Why is it called "Abstract Factory"?](#why-is-it-called-abstract-factory)
+- [Real-world use cases](#real-world-use-cases)
+  - [Cloud providers](#cloud-providers)
+  - [Database families](#database-families)
+  - [Payment providers](#payment-providers)
+  - [Game themes or worlds](#game-themes-or-worlds)
+  - [Production vs. test dependencies](#production-vs-test-dependencies)
+  - [API versions](#api-versions)
+  - [The common thread](#the-common-thread)
+- [Abstract Factory vs. Factory Method](#abstract-factory-vs-factory-method)
+- [Why not just use `if` statements?](#why-not-just-use-if-statements)
+- [Tradeoff](#tradeoff)
+- [Run the demo](#run-the-demo)
+- [What to notice while reading the code](#what-to-notice-while-reading-the-code)
+
 ## What problem does it solve?
 
 Abstract Factory creates **families of related objects** without making the client depend on their concrete classes.
