@@ -2,16 +2,24 @@
 
 A hands-on reference project for learning and demonstrating the classic **Gang of Four (GoF) design patterns**.
 
-The goal of this repository is to cover the major object-oriented design patterns described by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides in *Design Patterns: Elements of Reusable Object-Oriented Software*.
+The demos are organized under the three GoF categories.
 
-Rather than treating the patterns as abstract definitions, this project will build small, focused, runnable examples that make it clear:
+## Repository Layout
 
-- what problem each pattern solves
-- how the pattern is structured
-- when the pattern is useful
-- the tradeoffs involved
-- common mistakes and overuse
-- how the pattern can appear in real-world application code
+```text
+creational/
+    factory-method/
+
+structural/
+    adapter/
+    composite/
+    decorator/
+    facade/
+
+behavioral/
+    observer/
+    strategy/
+```
 
 ## The 23 Gang of Four Patterns
 
@@ -21,7 +29,7 @@ Patterns concerned with how objects are created.
 
 1. Abstract Factory
 2. Builder
-3. Factory Method
+3. Factory Method — [demo](creational/factory-method/)
 4. Prototype
 5. Singleton
 
@@ -29,11 +37,11 @@ Patterns concerned with how objects are created.
 
 Patterns concerned with how classes and objects are composed into larger structures.
 
-1. Adapter
+1. Adapter — [demo](structural/adapter/)
 2. Bridge
-3. Composite
-4. Decorator
-5. Facade
+3. Composite — [demo](structural/composite/)
+4. Decorator — [demo](structural/decorator/)
+5. Facade — [demo](structural/facade/)
 6. Flyweight
 7. Proxy
 
@@ -47,20 +55,12 @@ Patterns concerned with communication and responsibility between objects.
 4. Iterator
 5. Mediator
 6. Memento
-7. Observer
+7. Observer — [demo](behavioral/observer/)
 8. State
-9. Strategy
+9. Strategy — [demo](behavioral/strategy/)
 10. Template Method
 11. Visitor
 
 ## Project Approach
 
-Each pattern should eventually have its own small demo. The examples should favor clarity over cleverness and make the important roles in the pattern easy to identify.
-
-Where useful, a demo can include both a straightforward implementation and a short explanation of why the pattern is preferable to a more tightly coupled alternative.
-
-The repository is intended to grow into a practical study guide and reference: something that can be run, modified, experimented with, and revisited when a particular design pattern comes up in real software.
-
-## Status
-
-This project is just getting started. The README establishes the scope; individual pattern demos will be added incrementally.
+Each pattern gets a small focused demo and README covering what problem it solves, its structure, tradeoffs, and how it appears in real software.
