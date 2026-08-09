@@ -8,7 +8,9 @@ The demos are organized under the three GoF categories.
 
 ```text
 creational/
+    builder/
     factory-method/
+    prototype/
 
 structural/
     adapter/
@@ -28,9 +30,9 @@ behavioral/
 Patterns concerned with how objects are created.
 
 1. Abstract Factory
-2. Builder
+2. Builder — [demo](creational/builder/)
 3. Factory Method — [demo](creational/factory-method/)
-4. Prototype
+4. Prototype — [demo](creational/prototype/)
 5. Singleton
 
 ### Structural Patterns
