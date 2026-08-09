@@ -50,6 +50,114 @@ checkbox = factory.createCheckbox();
 
 without containing `new MacButton()`, `new WindowsButton()`, or other platform-specific creation logic.
 
+## Interface mechanics: why the factories must share a contract
+
+For the factories to be seamlessly interchangeable, the concrete factories need to satisfy the same factory contract.
+
+In Java, that usually means they all `implement` the same interface (or, alternatively, `extend` the same abstract base class).
+
+Using the game-world example:
+
+```java
+public interface GameFactory {
+    Enemy createEnemy();
+    Weapon createWeapon();
+    Building createBuilding();
+}
+```
+
+`GameFactory` defines what every compatible game factory must be able to create.
+
+The concrete factories then implement that contract:
+
+```java
+public class MedievalFactory implements GameFactory {
+    @Override
+    public Enemy createEnemy() {
+        return new Knight();
+    }
+
+    @Override
+    public Weapon createWeapon() {
+        return new Sword();
+    }
+
+    @Override
+    public Building createBuilding() {
+        return new Castle();
+    }
+}
+```
+
+and:
+
+```java
+public class SciFiFactory implements GameFactory {
+    @Override
+    public Enemy createEnemy() {
+        return new Robot();
+    }
+
+    @Override
+    public Weapon createWeapon() {
+        return new LaserGun();
+    }
+
+    @Override
+    public Building createBuilding() {
+        return new SpaceStation();
+    }
+}
+```
+
+The important mechanics are:
+
+- **`GameFactory` is the shared interface.** It defines the required creation methods.
+- **Concrete factories implement the interface.** `MedievalFactory` and `SciFiFactory` promise to provide those operations.
+- **The method signatures match the contract.** Both factories provide `createEnemy()`, `createWeapon()`, and `createBuilding()` with compatible return types.
+
+A terminology detail: when `GameFactory` is a Java `interface`, the concrete factories **implement** it; they do not inherit from it in the same sense that a subclass `extends` a concrete or abstract class.
+
+### Why this is required: polymorphism
+
+The benefit is that the core game code can hold a reference whose type is simply `GameFactory`:
+
+```java
+GameFactory factory = new MedievalFactory();
+```
+
+or:
+
+```java
+GameFactory factory = new SciFiFactory();
+```
+
+The rest of the code does not have to change:
+
+```java
+Enemy enemy = factory.createEnemy();
+Weapon weapon = factory.createWeapon();
+Building building = factory.createBuilding();
+```
+
+If `factory` refers to a `MedievalFactory`, `createWeapon()` produces a `Sword`. If it refers to a `SciFiFactory`, the same call produces a `LaserGun`.
+
+```text
+                   GameFactory reference
+                          |
+                factory.createWeapon()
+                          |
+              +-----------+-----------+
+              |                       |
+      MedievalFactory            SciFiFactory
+              |                       |
+            Sword                  LaserGun
+```
+
+That is polymorphism doing the work: the calling code talks to the shared abstraction, while the concrete object determines which implementation actually runs.
+
+Without the common factory contract, the game engine could not treat the two factories as interchangeable `GameFactory` objects. It would have to know about the concrete factory types and branch between them itself, which defeats much of the purpose of the pattern.
+
 ## Why is it called "Abstract Factory"?
 
 The factory itself is abstracted behind `GUIFactory`. The client knows what *kinds* of related objects it needs, but not which concrete versions it will receive.
