@@ -91,6 +91,53 @@ finished User
 
 This also explains why some fields appear twice in `User.java`: the Builder temporarily holds them while the object is being configured, and the final `User` stores them after construction is complete.
 
+## Important: Builder is a nested class, not a subclass
+
+This can be easy to miss when first reading `User.java`.
+
+The demo contains this structure:
+
+```java
+public class User {
+
+    public static class Builder {
+        // builder fields and methods
+    }
+}
+```
+
+`Builder` is a **nested class**: it is a separate class declared inside the scope of `User`. That is why it is referred to as:
+
+```java
+User.Builder
+```
+
+It is **not a subclass of `User`** and there is no inheritance relationship between them.
+
+A subclass would look something like:
+
+```java
+class Builder extends User {
+    // ...
+}
+```
+
+That is *not* what this implementation does.
+
+A useful mental model is:
+
+```text
+User
+|
++-- contains the definition of nested class Builder
+
+Builder object  ---- builds ---->  User object
+```
+
+The Builder is therefore its own temporary object whose job is to collect the values needed to create a different object: the `User`.
+
+Recognizing that there are **two separate classes and two separate objects** makes the rest of the implementation much easier to follow.
+
 ## What build() does
 
 Eventually:
