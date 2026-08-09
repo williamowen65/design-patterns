@@ -4,6 +4,15 @@ A hands-on reference project for learning and demonstrating the classic **Gang o
 
 The demos are organized under the three GoF categories.
 
+## Table of Contents
+
+- [Repository Layout](#repository-layout)
+- [The 23 Gang of Four Patterns](#the-23-gang-of-four-patterns)
+  - [Creational Patterns](#creational-patterns)
+  - [Structural Patterns](#structural-patterns)
+  - [Behavioral Patterns](#behavioral-patterns)
+- [Project Approach](#project-approach)
+
 ## Repository Layout
 
 ```text
