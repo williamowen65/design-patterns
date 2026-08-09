@@ -11,6 +11,7 @@ creational/
     builder/
     factory-method/
     prototype/
+    singleton/
 
 structural/
     adapter/
@@ -33,7 +34,7 @@ Patterns concerned with how objects are created.
 2. Builder — [demo](creational/builder/)
 3. Factory Method — [demo](creational/factory-method/)
 4. Prototype — [demo](creational/prototype/)
-5. Singleton
+5. Singleton — [demo](creational/singleton/)
 
 ### Structural Patterns
 
