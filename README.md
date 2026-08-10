@@ -27,6 +27,7 @@ behavioral/
     command/
     memento/
     observer/
+    state/
     strategy/
 ```
 
@@ -65,7 +66,7 @@ Patterns concerned with communication and responsibility between objects.
 5. Mediator
 6. Memento — [demo](behavioral/memento/)
 7. Observer — [demo](behavioral/observer/)
-8. State
+8. State — [demo](behavioral/state/)
 9. Strategy — [demo](behavioral/strategy/)
 10. Template Method
 11. Visitor
