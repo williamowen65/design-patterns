@@ -67,6 +67,40 @@ Patterns concerned with communication and responsibility between objects.
 10. Template Method
 11. Visitor
 
+## A useful realization: many patterns use the same OOP mechanics
+
+The 23 GoF patterns are not 23 completely different programming mechanisms. Many of them are built from the same small set of object-oriented tools:
+
+- interfaces and polymorphism
+- composition
+- inheritance
+- delegation
+- encapsulation
+
+Because of that, different patterns can look extremely similar in code or even have nearly identical class diagrams. What usually distinguishes one pattern from another is **the problem the programmer is trying to solve**.
+
+For example, Bridge and Strategy can both contain code shaped roughly like this:
+
+```java
+class Thing {
+    private SomeInterface implementation;
+}
+```
+
+In both cases, `Thing` holds another object through an interface and delegates work to it. The mechanics are similar, but the intent is different:
+
+- **Strategy:** "I want to swap the algorithm or behavior this object uses."
+- **Bridge:** "I have two dimensions of my design that should evolve independently, so I will connect them through composition."
+- **Abstract Factory:** "I need to create compatible families of objects without the caller depending on their concrete types."
+
+This is why identifying a pattern purely from syntax can be misleading. A better question is:
+
+> **What problem was the programmer trying to solve?**
+
+Design patterns are best thought of as **named recipes for applying a relatively small set of OOP principles to recurring design problems**, rather than 23 unrelated language features.
+
+As you learn more patterns, recognizing the underlying primitives is more valuable than memorizing every class diagram. Once composition, polymorphism, delegation, inheritance, and encapsulation become familiar, many patterns start to feel like different arrangements of tools you already know.
+
 ## Project Approach
 
 Each pattern gets a small focused demo and README covering what problem it solves, its structure, tradeoffs, and how it appears in real software.
