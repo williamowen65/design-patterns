@@ -12,6 +12,57 @@ This demo uses a media player with three states:
 
 The `MediaPlayer` delegates behavior to whichever `PlayerState` object is currently active.
 
+## A naming trap: ordinary state vs. the State pattern
+
+The word **state** already has a very common meaning in programming, so the name of this pattern can be confusing at first.
+
+An object having state does **not** mean it is using the State pattern.
+
+### Ordinary object state
+
+Normally, "state" just means the values an object currently stores in its fields:
+
+```java
+player.setPlaying(true);
+player.setVolume(50);
+```
+
+Values such as `playing`, `volume`, `name`, `balance`, or `position` are ordinary object state. Nearly every useful object has state in this sense.
+
+### The State pattern
+
+The **State design pattern** is more specific. It represents a meaningful **behavioral mode** as an object.
+
+For example, instead of storing a mode and repeatedly asking what it is:
+
+```java
+if (state == PLAYING) {
+    // behavior for playing
+} else if (state == PAUSED) {
+    // behavior for paused
+} else if (state == STOPPED) {
+    // behavior for stopped
+}
+```
+
+the modes themselves become objects:
+
+```text
+PlayingState
+PausedState
+StoppedState
+```
+
+Each state object contains the behavior appropriate for that mode, and the main object delegates to whichever one is currently active.
+
+So there are two related but different meanings:
+
+> **Ordinary state:** the values an object currently holds.
+
+> **State pattern:** representing a behavioral mode as an object so that the object's behavior changes by swapping that state object.
+
+A useful test is: **am I merely storing data about the object's current condition, or am I turning each condition into an object that owns its condition-specific behavior?** The second is the State pattern.
+
 ## Without State
 
 A simple implementation might keep a string or enum and branch everywhere:
