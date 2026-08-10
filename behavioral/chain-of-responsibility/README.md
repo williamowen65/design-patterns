@@ -81,10 +81,73 @@ Chain of Responsibility becomes useful when each branch has enough behavior to d
 With a chain, the caller just does:
 
 ```java
-firstHandler.handle(request);
+chainHead.handle(request);
 ```
 
 It does not need to know which handler will eventually process the request.
+
+## The head of the chain vs. the first handler
+
+There is a subtle naming distinction that makes this pattern easier to reason about.
+
+In this demo, `PasswordResetHandler` happens to be the **first concrete handler**. But from the caller's point of view, that object is also serving a second role: it is the **head (entry point) of the entire chain**.
+
+Those are two different ways of describing the same object:
+
+```text
+Concrete responsibility: PasswordResetHandler
+Structural role:         head of the chain
+```
+
+So code like this is technically correct:
+
+```java
+passwordHandler.handle(request);
+```
+
+but it can be semantically misleading. It sounds as though the caller is deliberately sending the request to the password-reset logic.
+
+The caller should instead think, "send this request through the support chain." A clearer reference name is therefore:
+
+```java
+SupportHandler chainHead = passwordHandler;
+chainHead.handle(request);
+```
+
+or:
+
+```java
+SupportHandler supportChain = passwordHandler;
+supportChain.handle(request);
+```
+
+`PasswordResetHandler` still handles password-reset requests when they reach it. But `chainHead` describes the role that reference plays for the calling code: it is the entry point into the routing mechanism.
+
+This distinction becomes more valuable if the order changes later:
+
+```text
+Authentication -> PasswordReset -> Technical -> Billing
+```
+
+The caller should not have to change its mental model to:
+
+```java
+authenticationHandler.handle(request);
+```
+
+It can continue to say:
+
+```java
+chainHead.handle(request);
+```
+
+regardless of which concrete handler happens to be first.
+
+A useful naming rule is:
+
+> **The concrete class name describes what that node handles; `chainHead` or `supportChain` describes how the caller uses the chain as a whole.**
+
+The `handle()` method still belongs to every handler because each node must be able to receive a request and either process it or forward it. But the caller invokes `handle()` on the chain's entry point, not because the first node's specific responsibility is special.
 
 ## Building the chain
 
@@ -219,7 +282,7 @@ The decoupling is useful, but it can make control flow less obvious.
 When you see:
 
 ```java
-firstHandler.handle(request);
+chainHead.handle(request);
 ```
 
 it may take some investigation to discover which handler eventually receives the request.
