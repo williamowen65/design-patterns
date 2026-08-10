@@ -24,6 +24,7 @@ structural/
     proxy/
 
 behavioral/
+    chain-of-responsibility/
     command/
     memento/
     observer/
@@ -59,7 +60,7 @@ Patterns concerned with how classes and objects are composed into larger structu
 
 Patterns concerned with communication and responsibility between objects.
 
-1. Chain of Responsibility
+1. Chain of Responsibility — [demo](behavioral/chain-of-responsibility/)
 2. Command — [demo](behavioral/command/)
 3. Interpreter
 4. Iterator
