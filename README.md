@@ -26,6 +26,7 @@ structural/
 behavioral/
     chain-of-responsibility/
     command/
+    iterator/
     mediator/
     memento/
     observer/
@@ -64,7 +65,7 @@ Patterns concerned with communication and responsibility between objects.
 1. Chain of Responsibility — [demo](behavioral/chain-of-responsibility/)
 2. Command — [demo](behavioral/command/)
 3. Interpreter
-4. Iterator
+4. Iterator — [demo](behavioral/iterator/)
 5. Mediator — [demo](behavioral/mediator/)
 6. Memento — [demo](behavioral/memento/)
 7. Observer — [demo](behavioral/observer/)
