@@ -16,6 +16,7 @@ creational/
 
 structural/
     adapter/
+    bridge/
     composite/
     decorator/
     facade/
@@ -43,7 +44,7 @@ Patterns concerned with how objects are created.
 Patterns concerned with how classes and objects are composed into larger structures.
 
 1. Adapter — [demo](structural/adapter/)
-2. Bridge
+2. Bridge — [demo](structural/bridge/)
 3. Composite — [demo](structural/composite/)
 4. Decorator — [demo](structural/decorator/)
 5. Facade — [demo](structural/facade/)
