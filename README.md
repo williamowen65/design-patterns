@@ -24,6 +24,7 @@ structural/
     proxy/
 
 behavioral/
+    command/
     observer/
     strategy/
 ```
@@ -57,7 +58,7 @@ Patterns concerned with how classes and objects are composed into larger structu
 Patterns concerned with communication and responsibility between objects.
 
 1. Chain of Responsibility
-2. Command
+2. Command — [demo](behavioral/command/)
 3. Interpreter
 4. Iterator
 5. Mediator
