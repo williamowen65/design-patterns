@@ -25,6 +25,7 @@ structural/
 
 behavioral/
     command/
+    memento/
     observer/
     strategy/
 ```
@@ -62,7 +63,7 @@ Patterns concerned with communication and responsibility between objects.
 3. Interpreter
 4. Iterator
 5. Mediator
-6. Memento
+6. Memento — [demo](behavioral/memento/)
 7. Observer — [demo](behavioral/observer/)
 8. State
 9. Strategy — [demo](behavioral/strategy/)
