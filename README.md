@@ -32,6 +32,7 @@ behavioral/
     observer/
     state/
     strategy/
+    template-method/
 ```
 
 ## The 23 Gang of Four Patterns
@@ -71,7 +72,7 @@ Patterns concerned with communication and responsibility between objects.
 7. Observer — [demo](behavioral/observer/)
 8. State — [demo](behavioral/state/)
 9. Strategy — [demo](behavioral/strategy/)
-10. Template Method
+10. Template Method — [demo](behavioral/template-method/)
 11. Visitor
 
 ## A useful realization: many patterns use the same OOP mechanics
