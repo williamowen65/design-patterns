@@ -20,6 +20,7 @@ structural/
     composite/
     decorator/
     facade/
+    flyweight/
     proxy/
 
 behavioral/
@@ -48,7 +49,7 @@ Patterns concerned with how classes and objects are composed into larger structu
 3. Composite — [demo](structural/composite/)
 4. Decorator — [demo](structural/decorator/)
 5. Facade — [demo](structural/facade/)
-6. Flyweight
+6. Flyweight — [demo](structural/flyweight/)
 7. Proxy — [demo](structural/proxy/)
 
 ### Behavioral Patterns
