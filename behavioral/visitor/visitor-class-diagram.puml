@@ -1,0 +1,68 @@
+@startuml
+title Visitor Pattern - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+interface Shape {
+  +accept(visitor: ShapeVisitor): void
+}
+
+class Circle {
+  -radius: double
+  +Circle(radius: double)
+  +getRadius(): double
+  +accept(visitor: ShapeVisitor): void
+}
+
+class Rectangle {
+  -width: double
+  -height: double
+  +Rectangle(width: double, height: double)
+  +getWidth(): double
+  +getHeight(): double
+  +accept(visitor: ShapeVisitor): void
+}
+
+interface ShapeVisitor {
+  +visit(circle: Circle): void
+  +visit(rectangle: Rectangle): void
+}
+
+class DrawingVisitor {
+  +visit(circle: Circle): void
+  +visit(rectangle: Rectangle): void
+}
+
+class AreaVisitor {
+  -totalArea: double
+  +visit(circle: Circle): void
+  +visit(rectangle: Rectangle): void
+  +getTotalArea(): double
+}
+
+class VisitorDemo {
+  +main(args: String[]): void
+}
+
+Shape <|.. Circle
+Shape <|.. Rectangle
+
+ShapeVisitor <|.. DrawingVisitor
+ShapeVisitor <|.. AreaVisitor
+
+Circle ..> ShapeVisitor : accept(visitor)\nvisitor.visit(this)
+Rectangle ..> ShapeVisitor : accept(visitor)\nvisitor.visit(this)
+
+VisitorDemo ..> Shape : creates and visits
+VisitorDemo ..> DrawingVisitor
+VisitorDemo ..> AreaVisitor
+
+note right of Shape
+  Element hierarchy
+end note
+
+note right of ShapeVisitor
+  Operation hierarchy
+end note
+@enduml

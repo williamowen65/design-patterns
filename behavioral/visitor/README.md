@@ -27,6 +27,19 @@ Visitor is especially useful when the element types rarely change but you freque
 - `DrawingVisitor` and `AreaVisitor` — separate operations applied to the shapes.
 - `VisitorDemo` — sends multiple visitors through the same collection.
 
+## UML class diagram
+
+The diagram source is in [`visitor-class-diagram.puml`](visitor-class-diagram.puml).
+
+To preview it in VS Code, install the **PlantUML** extension by jebbs, open the `.puml` file, and run **PlantUML: Preview Current Diagram** from the Command Palette. The usual keyboard shortcut is `Alt+D`.
+
+The diagram separates the two dimensions of the pattern:
+
+- the `Shape` element hierarchy
+- the `ShapeVisitor` operation hierarchy
+
+The dashed `accept(visitor) → visitor.visit(this)` dependencies highlight the double-dispatch step.
+
 ## The double-dispatch step
 
 The call sequence is:
