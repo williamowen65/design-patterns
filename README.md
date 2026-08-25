@@ -26,6 +26,7 @@ structural/
 behavioral/
     chain-of-responsibility/
     command/
+    interpreter/
     iterator/
     mediator/
     memento/
@@ -33,6 +34,7 @@ behavioral/
     state/
     strategy/
     template-method/
+    visitor/
 ```
 
 ## The 23 Gang of Four Patterns
@@ -65,7 +67,7 @@ Patterns concerned with communication and responsibility between objects.
 
 1. Chain of Responsibility — [demo](behavioral/chain-of-responsibility/)
 2. Command — [demo](behavioral/command/)
-3. Interpreter
+3. Interpreter — [demo](behavioral/interpreter/)
 4. Iterator — [demo](behavioral/iterator/)
 5. Mediator — [demo](behavioral/mediator/)
 6. Memento — [demo](behavioral/memento/)
@@ -73,7 +75,7 @@ Patterns concerned with communication and responsibility between objects.
 8. State — [demo](behavioral/state/)
 9. Strategy — [demo](behavioral/strategy/)
 10. Template Method — [demo](behavioral/template-method/)
-11. Visitor
+11. Visitor — [demo](behavioral/visitor/)
 
 ## A useful realization: many patterns use the same OOP mechanics
 
@@ -112,3 +114,5 @@ As you learn more patterns, recognizing the underlying primitives is more valuab
 ## Project Approach
 
 Each pattern gets a small focused demo and README covering what problem it solves, its structure, tradeoffs, and how it appears in real software.
+
+The repository now includes runnable demos for all 23 classic GoF patterns.
