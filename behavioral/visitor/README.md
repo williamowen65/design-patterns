@@ -27,18 +27,80 @@ Visitor is especially useful when the element types rarely change but you freque
 - `DrawingVisitor` and `AreaVisitor` — separate operations applied to the shapes.
 - `VisitorDemo` — sends multiple visitors through the same collection.
 
-## UML class diagram
+## Mermaid class diagram
 
-The diagram source is in [`visitor-class-diagram.puml`](visitor-class-diagram.puml).
+GitHub renders this diagram directly. In VS Code, open this README and use **Markdown: Open Preview** (`Ctrl+Shift+V` on Windows/Linux).
 
-To preview it in VS Code, install the **PlantUML** extension by jebbs, open the `.puml` file, and run **PlantUML: Preview Current Diagram** from the Command Palette. The usual keyboard shortcut is `Alt+D`.
+```mermaid
+classDiagram
+    direction LR
+
+    class Shape {
+        <<interface>>
+        +accept(visitor: ShapeVisitor) void
+    }
+
+    class Circle {
+        -double radius
+        +Circle(radius: double)
+        +getRadius() double
+        +accept(visitor: ShapeVisitor) void
+    }
+
+    class Rectangle {
+        -double width
+        -double height
+        +Rectangle(width: double, height: double)
+        +getWidth() double
+        +getHeight() double
+        +accept(visitor: ShapeVisitor) void
+    }
+
+    class ShapeVisitor {
+        <<interface>>
+        +visit(circle: Circle) void
+        +visit(rectangle: Rectangle) void
+    }
+
+    class DrawingVisitor {
+        +visit(circle: Circle) void
+        +visit(rectangle: Rectangle) void
+    }
+
+    class AreaVisitor {
+        -double totalArea
+        +visit(circle: Circle) void
+        +visit(rectangle: Rectangle) void
+        +getTotalArea() double
+    }
+
+    class VisitorDemo {
+        +main(args: String[]) void
+    }
+
+    Shape <|.. Circle : implements
+    Shape <|.. Rectangle : implements
+    ShapeVisitor <|.. DrawingVisitor : implements
+    ShapeVisitor <|.. AreaVisitor : implements
+
+    Circle ..> ShapeVisitor : accept then visit
+    Rectangle ..> ShapeVisitor : accept then visit
+
+    VisitorDemo ..> Shape : creates
+    VisitorDemo ..> DrawingVisitor : uses
+    VisitorDemo ..> AreaVisitor : uses
+```
 
 The diagram separates the two dimensions of the pattern:
 
 - the `Shape` element hierarchy
 - the `ShapeVisitor` operation hierarchy
 
-The dashed `accept(visitor) → visitor.visit(this)` dependencies highlight the double-dispatch step.
+The `accept then visit` dependencies highlight the double-dispatch step.
+
+### PlantUML version
+
+The original PlantUML source remains available in [`visitor-class-diagram.puml`](visitor-class-diagram.puml). To preview it in VS Code, install the **PlantUML** extension by jebbs, open the `.puml` file, and run **PlantUML: Preview Current Diagram** from the Command Palette. The usual keyboard shortcut is `Alt+D`.
 
 ## The double-dispatch step
 
