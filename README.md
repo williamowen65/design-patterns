@@ -4,6 +4,11 @@ A hands-on reference project for learning and demonstrating the classic **Gang o
 
 The demos are organized under the three GoF categories.
 
+## Explore the patterns
+
+- [Browse practical use-case ideas for all 23 patterns](USE_CASES.md)
+- Follow the demo links below for runnable Java examples and deeper explanations.
+
 ## Repository Layout
 
 ```text
