@@ -4,7 +4,7 @@ This guide is meant to spark ideas, not prescribe a pattern. Start with the prob
 
 ## Creational patterns
 
-### Abstract Factory
+### [Abstract Factory](creational/abstract-factory/)
 
 Create compatible families of related objects without naming their concrete classes.
 
@@ -14,7 +14,7 @@ Create compatible families of related objects without naming their concrete clas
 - game worlds that produce matching characters, terrain, weapons, and sound sets
 - Atlas renderers that create coordinated desktop, mobile, or accessibility-focused graph controls
 
-### Builder
+### [Builder](creational/builder/)
 
 Construct a complicated object one understandable choice at a time.
 
@@ -24,7 +24,7 @@ Construct a complicated object one understandable choice at a time.
 - emails assembled from recipients, subject, content, attachments, and metadata
 - Atlas posts composed from text, images, polls, charts, citations, and relationship blocks
 
-### Factory Method
+### [Factory Method](creational/factory-method/)
 
 Let subclasses decide which concrete object a creation step returns.
 
@@ -34,7 +34,7 @@ Let subclasses decide which concrete object a creation step returns.
 - import pipelines creating format-specific parsers
 - test frameworks creating platform-specific drivers or fixtures
 
-### Prototype
+### [Prototype](creational/prototype/)
 
 Create new objects by copying a configured example.
 
@@ -44,7 +44,7 @@ Create new objects by copying a configured example.
 - copying a complex test setup before changing one variable
 - duplicating an Atlas issue or proposal as the starting point for an alternative
 
-### Singleton
+### [Singleton](creational/singleton/)
 
 Provide one shared instance when exactly one coordinated instance is genuinely required.
 
@@ -58,7 +58,7 @@ Singleton is often overused. Dependency injection can still create one shared in
 
 ## Structural patterns
 
-### Adapter
+### [Adapter](structural/adapter/)
 
 Make an existing interface usable where a different interface is expected.
 
@@ -68,7 +68,7 @@ Make an existing interface usable where a different interface is expected.
 - presenting different cloud-storage SDKs through one storage interface
 - adapting imported graph formats into Atlas nodes and relationships
 
-### Bridge
+### [Bridge](structural/bridge/)
 
 Separate two dimensions that need to vary independently.
 
@@ -78,7 +78,7 @@ Separate two dimensions that need to vary independently.
 - reports separated from HTML, CSV, spreadsheet, and PDF output
 - Atlas graph views separated from D3, WebGL, static-image, and accessible-list renderers
 
-### Composite
+### [Composite](structural/composite/)
 
 Treat individual objects and nested groups through the same interface.
 
@@ -88,7 +88,7 @@ Treat individual objects and nested groups through the same interface.
 - menu items and submenus
 - Atlas issues containing recursively nested sub-issues
 
-### Decorator
+### [Decorator](structural/decorator/)
 
 Add optional behavior by wrapping an object without changing its class.
 
@@ -98,7 +98,7 @@ Add optional behavior by wrapping an object without changing its class.
 - adding borders, scrolling, or shadows to UI elements
 - layering permissions, moderation markers, or analytics around Atlas post operations
 
-### Facade
+### [Facade](structural/facade/)
 
 Offer one simple entry point to a complicated subsystem.
 
@@ -108,7 +108,7 @@ Offer one simple entry point to a complicated subsystem.
 - a deployment API hiding build, upload, release, and health-check steps
 - an Atlas publishing facade coordinating validation, persistence, indexing, notifications, and live updates
 
-### Flyweight
+### [Flyweight](structural/flyweight/)
 
 Share repeated intrinsic data while keeping unique contextual data outside it.
 
@@ -118,7 +118,7 @@ Share repeated intrinsic data while keeping unique contextual data outside it.
 - games sharing meshes and textures across many objects
 - Atlas graph nodes sharing visual style definitions instead of duplicating them per node
 
-### Proxy
+### [Proxy](structural/proxy/)
 
 Stand in for another object to control or delay access to it.
 
@@ -130,7 +130,7 @@ Stand in for another object to control or delay access to it.
 
 ## Behavioral patterns
 
-### Chain of Responsibility
+### [Chain of Responsibility](behavioral/chain-of-responsibility/)
 
 Pass a request through potential handlers until one handles it or the chain ends.
 
@@ -140,7 +140,7 @@ Pass a request through potential handlers until one handles it or the chain ends
 - event bubbling through nested UI components
 - Atlas moderation checks that escalate questionable content through increasingly expensive rules
 
-### Command
+### [Command](behavioral/command/)
 
 Represent an action as an object.
 
@@ -150,7 +150,7 @@ Represent an action as an object.
 - scheduling operations for later execution
 - Atlas commands for creating, linking, moving, voting on, or deleting graph nodes—with undo support
 
-### Interpreter
+### [Interpreter](behavioral/interpreter/)
 
 Represent a small language or rule grammar as an object structure that can be evaluated.
 
@@ -160,7 +160,7 @@ Represent a small language or rule grammar as an object structure that can be ev
 - access-control policies
 - Atlas queries or community-created rules built from AND, OR, NOT, comparison, and topic expressions
 
-### Iterator
+### [Iterator](behavioral/iterator/)
 
 Traverse a collection without exposing how it stores its elements.
 
@@ -170,7 +170,7 @@ Traverse a collection without exposing how it stores its elements.
 - scanning database results lazily
 - walking visible Atlas nodes differently from the entire underlying graph
 
-### Mediator
+### [Mediator](behavioral/mediator/)
 
 Centralize communication among objects so they do not depend directly on one another.
 
@@ -180,7 +180,7 @@ Centralize communication among objects so they do not depend directly on one ano
 - event buses coordinating independent application modules
 - Atlas real-time collaboration coordinating users, graph edits, presence, and notifications
 
-### Memento
+### [Memento](behavioral/memento/)
 
 Capture state so it can be restored without exposing the object's internals.
 
@@ -190,7 +190,7 @@ Capture state so it can be restored without exposing the object's internals.
 - transaction checkpoints
 - saving an Atlas graph-editing session or returning to a previous exploration state
 
-### Observer
+### [Observer](behavioral/observer/)
 
 Notify interested subscribers automatically when something changes.
 
@@ -200,7 +200,7 @@ Notify interested subscribers automatically when something changes.
 - publishing domain events to analytics and notification services
 - updating Atlas votes, comments, live-user indicators, and graph views in real time
 
-### State
+### [State](behavioral/state/)
 
 Let an object change its behavior as its internal state changes.
 
@@ -210,7 +210,7 @@ Let an object change its behavior as its internal state changes.
 - document workflows moving through draft, review, published, and archived states
 - Atlas proposals changing available actions as they move through drafting, discussion, voting, and resolution
 
-### Strategy
+### [Strategy](behavioral/strategy/)
 
 Make an algorithm replaceable at runtime.
 
@@ -220,7 +220,7 @@ Make an algorithm replaceable at runtime.
 - selecting different authentication methods
 - letting Atlas users switch graph layout algorithms or ranking methods
 
-### Template Method
+### [Template Method](behavioral/template-method/)
 
 Define the fixed sequence of an algorithm while subclasses customize selected steps.
 
@@ -230,7 +230,7 @@ Define the fixed sequence of an algorithm while subclasses customize selected st
 - building platform-specific applications through a common build pipeline
 - publishing different Atlas content types through a shared validation and indexing lifecycle
 
-### Visitor
+### [Visitor](behavioral/visitor/)
 
 Add new operations to a stable set of object types without placing every operation inside those objects.
 
