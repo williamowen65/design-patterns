@@ -8,6 +8,74 @@ That makes them different from the Gang of Four patterns. A GoF pattern usually 
 
 These categories can overlap. An event-driven architecture may use Observer inside one service. A layered application may use Strategy, Factory, and Repository classes. Architectural patterns and object-oriented patterns operate at different zoom levels rather than competing with each other.
 
+## What makes a pattern architectural?
+
+The word **architectural** can make these patterns sound like complete, mutually exclusive blueprints for an entire application. Most of them are not. They are better understood as **named, reusable partial solutions to recurring system-level problems**.
+
+An application's **architecture** is the complete collection of important structural decisions. An **architectural pattern** describes one recognizable arrangement within that architecture.
+
+That is why several patterns can be used at once. They often answer different questions:
+
+| Architectural question | Possible pattern |
+| --- | --- |
+| How do a frontend and backend divide responsibility? | Client–Server |
+| How is the backend organized internally? | Layered |
+| How do distributed components find and communicate with one another? | Broker |
+| How do components react asynchronously to something that happened? | Event-Driven |
+| How can optional features extend a stable core? | Microkernel |
+| How does analytical data move between systems? | ETL |
+| How is processing distributed or data replicated? | Leader–Worker or Primary–Replica |
+| How can independent specialists build a partial solution together? | Blackboard |
+
+These patterns are usually **composable rather than competing**. They compete only when they address the same problem at the same boundary. For example, one interaction might use a synchronous request and response, or it might be redesigned around asynchronous events. That is a genuine architectural choice. Client–Server and ETL normally do not compete because they describe different parts of the system.
+
+### Higher-level design, with system-wide consequences
+
+Architectural patterns are essentially higher-level design patterns, but size alone is not the full distinction. A decision becomes architectural when it shapes major boundaries or communication paths and has consequences across the system.
+
+A useful spectrum is:
+
+| Level | Typical question |
+| --- | --- |
+| Code | How should this method perform its task? |
+| Object design | How should these classes collaborate? |
+| Module design | How should this feature be divided internally? |
+| Architecture | What are the system's major boundaries, responsibilities, dependencies, and communication paths? |
+
+For example:
+
+- Using Strategy to swap voting algorithms is primarily an object-design decision.
+- Separating voting into a dedicated module is a module-design decision.
+- Making voting an independently deployed service changes networking, deployment, failure handling, data ownership, security, and operations, so it is an architectural decision.
+
+The boundary is intentionally fuzzy. The same underlying idea can appear at different levels:
+
+- A UI object notifying another UI object may be ordinary event-based design.
+- Independently deployed services exchanging durable events through a message broker is event-driven architecture.
+
+What changes is not only the number of components. It is the **scope and cost of the consequences**.
+
+A practical test is to ask whether the decision significantly affects qualities such as:
+
+- scalability;
+- availability and fault tolerance;
+- security boundaries;
+- performance;
+- deployability;
+- maintainability;
+- extensibility;
+- data ownership and consistency.
+
+If changing the decision would require reorganizing many parts of the system or changing how the system is deployed, operated, secured, or scaled, it is probably architectural.
+
+### Patterns are tools, not a checklist
+
+Architectural patterns provide perspectives and vocabulary for reasoning about a design. They help a team say, for example, "This work can happen later, so an event-driven interaction may fit," or "These features need a stable extension contract, so a microkernel may fit."
+
+They should not be collected for their own sake. A system does not need a Blackboard component merely because Blackboard appears in a list of architectural patterns. Start with a concrete problem, then decide whether a pattern's benefits justify its costs.
+
+> **Short version:** GoF patterns are usually named solutions for collaborations among classes and objects. Architectural patterns are named, partial solutions for consequential system-level structure. The complete architecture may contain many of both.
+
 ## At a glance
 
 | Pattern | Central idea | Useful when | Main danger |
