@@ -1,12 +1,11 @@
 # Design Pattern Demos
 
-A hands-on reference project for learning and demonstrating the classic **Gang of Four (GoF) design patterns**.
-
-The demos are organized under the three GoF categories.
+A hands-on reference project for learning and demonstrating classic **Gang of Four (GoF) design patterns** and larger-scale **architectural design patterns**.
 
 ## Explore the patterns
 
-- [Browse practical use-case ideas for all 23 patterns](USE_CASES.md)
+- [Browse practical use-case ideas for all 23 GoF patterns](USE_CASES.md)
+- [Study architectural patterns — Part I](architectural/README.md)
 - Follow the demo links below for runnable Java examples and deeper explanations.
 
 ## Repository Layout
@@ -40,6 +39,9 @@ behavioral/
     strategy/
     template-method/
     visitor/
+
+architectural/
+    README.md
 ```
 
 ## The 23 Gang of Four Patterns
@@ -82,9 +84,25 @@ Patterns concerned with communication and responsibility between objects.
 10. Template Method — [demo](behavioral/template-method/)
 11. Visitor — [demo](behavioral/visitor/)
 
-## A useful realization: many patterns use the same OOP mechanics
+## Architectural Patterns
 
-The 23 GoF patterns are not 23 completely different programming mechanisms. Many of them are built from the same small set of object-oriented tools:
+Architectural patterns operate at a wider zoom level than GoF patterns. They organize major parts of an application or distributed system rather than primarily organizing collaborating objects.
+
+The first architectural guide covers:
+
+1. [Introduction to architectural patterns](architectural/README.md)
+2. [Blackboard](architectural/README.md#blackboard-pattern)
+3. [Broker](architectural/README.md#broker-pattern)
+4. [Client–Server](architectural/README.md#clientserver-pattern)
+5. [Event-Driven](architectural/README.md#event-driven-pattern)
+6. [Extract–Transform–Load (ETL)](architectural/README.md#extracttransformload-etl-pattern)
+7. [Layered](architectural/README.md#layered-pattern)
+8. [Leader–Worker and Primary–Replica](architectural/README.md#leadersworkers-and-primaryreplicas)
+9. [Microkernel](architectural/README.md#microkernel-pattern)
+
+## A useful realization: many patterns use the same mechanics
+
+The 23 GoF patterns are not 23 completely different programming mechanisms. Many are built from the same small set of object-oriented tools:
 
 - interfaces and polymorphism
 - composition
@@ -112,12 +130,10 @@ This is why identifying a pattern purely from syntax can be misleading. A better
 
 > **What problem was the programmer trying to solve?**
 
-Design patterns are best thought of as **named recipes for applying a relatively small set of OOP principles to recurring design problems**, rather than 23 unrelated language features.
-
-As you learn more patterns, recognizing the underlying primitives is more valuable than memorizing every class diagram. Once composition, polymorphism, delegation, inheritance, and encapsulation become familiar, many patterns start to feel like different arrangements of tools you already know.
+Design patterns are best thought of as **named recipes for applying a relatively small set of principles to recurring design problems**, rather than unrelated language features.
 
 ## Project Approach
 
-Each pattern gets a small focused demo and README covering what problem it solves, its structure, tradeoffs, and how it appears in real software.
+Each GoF pattern gets a small focused demo and README covering what problem it solves, its structure, tradeoffs, and how it appears in real software.
 
-The repository now includes runnable demos for all 23 classic GoF patterns.
+Architectural topics begin as conceptual guides with diagrams, comparisons, tradeoffs, and examples. Focused runnable demonstrations can be added as the course progresses.
